@@ -15,10 +15,10 @@ export default Title;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
   },
   titleContainer: {
     fontSize: 30,
     fontWeight: "bold",
+    color: "white",
   },
 });

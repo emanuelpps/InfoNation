@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "InfoNation",
-    "slug": "InfoNation",
+    "slug": "infonation",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -16,6 +16,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.yourcompany.yourappname",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -31,6 +33,12 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6146547b-f2bc-42aa-8251-75191f4400c5"
+      }
+    },
+    "owner": "emapps"
   }
 }

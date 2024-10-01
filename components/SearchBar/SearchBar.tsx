@@ -5,8 +5,9 @@ type Props = {};
 
 const SearchBar = (props: Props) => {
   return (
-    <View>
-      <TextInput placeholder="Search..." />
+    <View style={styles.inputContainer}>
+      <Text style={styles.inputTitle}>Type to search</Text>
+      <TextInput placeholder="Search..." style={styles.inputStyles} />
     </View>
   );
 };
@@ -14,10 +15,24 @@ const SearchBar = (props: Props) => {
 export default SearchBar;
 
 const styles = StyleSheet.create({
+  inputContainer: {
+    marginBottom: 20,
+  },
+  inputTitle: {
+    fontSize: 20,
+    marginTop: 20,
+    fontWeight: "bold",
+    color: "white",
+  },
   inputStyles: {
     height: 40,
-    borderColor: "black",
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: 5,
+    borderColor: "white",
+    padding: 5,
+    width: 300,
+    maxWidth: 300,
+    marginTop: 20,
+    color: "white",
   },
 });
