@@ -1,9 +1,13 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 type Props = {};
 
 const SearchBar = (props: Props) => {
+  const [searchText, setSearchText] = useState<string>("");
+
+  /// armar un useEffect donde cada vez que searchtext se modofique se ejecute una llamada a la api con el respectivo parametro y se almacene la respuseta en un estado global
+  
   return (
     <View style={styles.inputContainer}>
       <Text style={styles.inputTitle}>Type to search</Text>
@@ -11,6 +15,8 @@ const SearchBar = (props: Props) => {
         placeholder="Search..."
         placeholderTextColor={"white"}
         style={styles.inputStyles}
+        value={searchText}
+        onChangeText={(text) => setSearchText(text)}
       />
     </View>
   );
@@ -37,5 +43,6 @@ const styles = StyleSheet.create({
     width: 300,
     maxWidth: 300,
     marginTop: 20,
+    color: "white",
   },
 });
