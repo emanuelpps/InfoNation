@@ -7,7 +7,11 @@ const SearchBar = (props: Props) => {
   return (
     <View style={styles.inputContainer}>
       <Text style={styles.inputTitle}>Type to search</Text>
-      <TextInput placeholder="Search..." style={styles.inputStyles} />
+      <TextInput
+        placeholder="Search..."
+        placeholderTextColor={"white"}
+        style={styles.inputStyles}
+      />
     </View>
   );
 };
@@ -33,6 +37,5 @@ const styles = StyleSheet.create({
     width: 300,
     maxWidth: 300,
     marginTop: 20,
-    color: "white",
   },
 });
