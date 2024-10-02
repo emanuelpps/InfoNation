@@ -50,8 +50,6 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 70,
     borderTopStartRadius: 70,
     alignItems: "center",
-    marginTop: 20,
-    padding: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

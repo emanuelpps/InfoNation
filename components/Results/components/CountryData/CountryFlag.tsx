@@ -7,7 +7,7 @@ const CountryFlag = (props: Props) => {
   return (
     <View>
       <Image
-        source={require("../../../assets/images/Flag-argentina.svg")}
+        source={require("../../../../assets/images/Flag-argentina.svg")}
         style={styles.image}
       />
       <Text style={styles.countryName}>name.common</Text>

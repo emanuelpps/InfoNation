@@ -1,14 +1,14 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import React from "react";
-import CountryFlag from "./components/CountryFlag";
-import CountryCard from "./components/CountryCard";
+//import CountryCard from "./components/CountryData/CountryCard";
+import CountryResults from "./components/CountryResults/CountryResults";
 
 type Props = {};
 
 const Results = (props: Props) => {
   return (
     <View style={styles.container}>
-      <CountryCard />
+      <CountryResults />
     </View>
   );
 };
