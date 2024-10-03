@@ -1,16 +1,41 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
-import React from "react";
+import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
+import React, { useState, useEffect } from "react";
 import CountryResultCard from "./CountryResultCard";
 import { useStoreSearchResults } from "@/store/StoreSearchResults";
+import CountryCard from "../CountryData/CountryCard";
+import { GetCountryData } from "@/api/GetCountryData";
 
 const CountryResults = () => {
   const { searchResults } = useStoreSearchResults();
+  const [countrySelected, setCountrySelected] = useState<string>("");
+
+  useEffect(() => {
+    const fetchCountryData = async () => {
+      const country = await GetCountryData(countrySelected);
+      setCountrySelected(country);
+    };
+    if (countrySelected) {
+      fetchCountryData();
+    }
+  });
   return (
     <ScrollView>
       <View style={styles.container}>
-        {Object.values(searchResults).length > 0 && searchResults.map((country, index) => (
-          <CountryResultCard key={index} index={index} name={country.name.common} flag={country.flags.svg} />
-        ))}
+        {countrySelected.length === 0 ? (
+          Object.values(searchResults).length > 0 &&
+          searchResults.map((country, index) => (
+            <Pressable onPress={() => setCountrySelected(country.name.common)}>
+              <CountryResultCard
+                key={index}
+                index={index}
+                name={country.name.common}
+                flag={country.flags.svg}
+              />
+            </Pressable>
+          ))
+        ) : (
+          <CountryCard countrySelected={countrySelected} />
+        )}
       </View>
     </ScrollView>
   );
@@ -28,4 +53,3 @@ const styles = StyleSheet.create({
     gap: 20,
   },
 });
-

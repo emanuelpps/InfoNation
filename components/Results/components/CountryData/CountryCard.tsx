@@ -2,19 +2,34 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import CountryFlag from "./CountryFlag";
 import CountryData from "./CountryData";
+import { useStoreSearchResults } from "@/store/StoreSearchResults";
 
-type Props = {};
-
-const ContryCard = (props: Props) => {
-  return (
-    <View style={styles.container}>
-      <CountryFlag />
-      <CountryData />
-    </View>
-  );
+type Props = {
+  countrySelected: CountryData[];
 };
 
-export default ContryCard;
+interface CountryData {
+  name: {
+    common: string;
+  };
+  capital: string;
+  continent: string;
+  independent: boolean;
+  unMember: boolean;
+  population: number;
+  flags: {
+    svg: string;
+  };
+}
+
+const CountryCard = ({ countrySelected }: Props) => (
+  <View style={styles.container}>
+    <CountryFlag countrySelected={countrySelected} />
+    <CountryData countrySelected={countrySelected} />
+  </View>
+);
+
+export default CountryCard;
 
 const styles = StyleSheet.create({
   container: {
@@ -34,3 +49,4 @@ const styles = StyleSheet.create({
     elevation: 12,
   },
 });
+

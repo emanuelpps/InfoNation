@@ -1,7 +1,9 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
 
-type Props = {};
+type Props = {
+  name: string;
+};
 
 const CountryFlag = (props: Props) => {
   return (
