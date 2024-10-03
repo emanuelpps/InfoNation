@@ -1,33 +1,15 @@
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import CountryResultCard from "./CountryResultCard";
+import { useStoreSearchResults } from "@/store/StoreSearchResults";
 
-type Props = {};
-
-const CountryResults = (props: Props) => {
-  const [countries] = useState([
-    {
-      name: "Argentina",
-      flag: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Flag_of_Argentina.svg",
-    },
-    {
-      name: "Brazil",
-      flag: "https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg",
-    },
-    {
-      name: "Colombia",
-      flag: "https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Colombia.svg",
-    },
-    {
-      name: "Mexico",
-      flag: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg",
-    },
-  ]);
+const CountryResults = () => {
+  const { searchResults } = useStoreSearchResults();
   return (
     <ScrollView>
       <View style={styles.container}>
-        {countries.map((country, index) => (
-          <CountryResultCard index={index} name={country.name} flag={country.flag} />
+        {Object.values(searchResults).length > 0 && searchResults.map((country, index) => (
+          <CountryResultCard key={index} index={index} name={country.name.common} flag={country.flags.svg} />
         ))}
       </View>
     </ScrollView>
@@ -46,3 +28,4 @@ const styles = StyleSheet.create({
     gap: 20,
   },
 });
+

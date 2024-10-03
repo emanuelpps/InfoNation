@@ -1,13 +1,25 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import React, { useState, useEffect } from "react";
+import { GetCountries } from "@/api/GetCountries";
+import { useStoreSearchResults } from "@/store/StoreSearchResults";
+import { CountryData } from "@/store/StoreSearchResults";
 
 type Props = {};
 
 const SearchBar = (props: Props) => {
+  const { setSearchResults } = useStoreSearchResults();
   const [searchText, setSearchText] = useState<string>("");
 
-  /// armar un useEffect donde cada vez que searchtext se modofique se ejecute una llamada a la api con el respectivo parametro y se almacene la respuseta en un estado global
-  
+  useEffect(() => {
+    const fetchSearch = async () => {
+      const search = await GetCountries(searchText);
+      setSearchResults(search);
+    };
+    if (searchText) {
+      fetchSearch();
+    }
+  }, [searchText, setSearchResults]);
+
   return (
     <View style={styles.inputContainer}>
       <Text style={styles.inputTitle}>Type to search</Text>
@@ -46,3 +58,4 @@ const styles = StyleSheet.create({
     color: "white",
   },
 });
+
